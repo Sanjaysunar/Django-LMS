@@ -112,3 +112,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.xdp_db.sqlite3.3T1N02
