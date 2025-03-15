@@ -27,7 +27,7 @@ def generate_random_otp(Length=7):
 
 class PasswordResetEmailVerifyAPIView(generics.RetrieveAPIView):
     permission_classes = [AllowAny]
-    serializer_class = api_serializer.UserSerializers
+    serializer_class = api_serializer.UserSerializer
 
     def get_object(self):
         email = self.kwargs['email']
@@ -52,7 +52,7 @@ class PasswordResetEmailVerifyAPIView(generics.RetrieveAPIView):
 
 class PasswordChangedAPIView(generics.CreateAPIView):
     permission_classes = [AllowAny]
-    serializer_class = api_serializer.UserSerializers
+    serializer_class = api_serializer.UserSerializer
 
     def create(self, *args, **kwargs):
         otp = request.data['otp']
