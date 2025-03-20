@@ -61,7 +61,8 @@ class CategorySerializer(serializers.ModelSerializer):
         model = api_models.Category
         fields = [
             "title", 
-            "image", 
+            "image",
+            "active", 
             "slug", 
             "course_count"
             ]

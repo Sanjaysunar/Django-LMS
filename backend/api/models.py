@@ -85,7 +85,8 @@ class Teacher(models.Model):
 class Category(models.Model):
     title = models.CharField(max_length=100)
     image = models.FileField(upload_to="course-file",default="category.jpg", null=True, blank=True)
-    slug = models.SlugField(unique=True)
+    active = models.BooleanField(default=True)
+    slug = models.SlugField(unique=True, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Category"
@@ -129,7 +130,7 @@ class Course(models.Model):
         super(Course, self).save(*args, **kwargs)
 
     def students(self):
-        return EnrolledCourse.objects.filter(courses=self)
+        return EnrolledCourse.objects.filter(course=self)
     
     def curriculum(self):
         return VariantItem.objects.filter(variant__course=self)
